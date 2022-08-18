@@ -156,7 +156,8 @@ public class PlayerController : CharacterController
         isMovable = false;
         foreach (var chara in controllCharacters)
         {
-            chara.Move(dir);
+            if(!chara.isGameOver)
+             chara.Move(dir);
         }
 
         //if(enemyController != null)
@@ -169,14 +170,33 @@ public class PlayerController : CharacterController
         isMovable = false;
         foreach (var chara in controllCharacters)
         {
-            chara.Move(dir);
+            if (!chara.isGameOver)
+                chara.Move(dir);
         }
 
         //if (enemyController != null)
         //    enemyController.StartAutoMoveEvent();
     }
 
+    public void GameOverPlayer(int id)
+    {
+        controllCharacters[id].GameOverEvent();
+
+        foreach(var p in controllCharacters)
+        {
+            if (!p.isGameOver)
+                return;
+        }
+        GameOverAll();
+
+    }
     
+
+    public void GameOverAll()
+    {
+
+    }
+
     //====================================================================================================
     // 入力イベント
     //====================================================================================================

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Player : Character
 {
+   
     EnemyController enemyController = new EnemyController();
     PlayerController playerController = new PlayerController();
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +34,18 @@ public class Player : Character
     protected override void TurnEnd()
     {
         isMove = false;
-        playerController.enableInput = true;
+
+        //　仮
+        //playerController.enableInput = true;
+
         if (enemyController != null)
+        {
+            Debug.Log("MoveAutoMessage");
             enemyController.StartAutoMoveEvent();
+        }
+        else
+            playerController.enableInput = true;
     }
+
+   
 }

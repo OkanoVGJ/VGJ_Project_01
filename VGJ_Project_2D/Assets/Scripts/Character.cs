@@ -10,14 +10,16 @@ public class Character : MonoBehaviour
     //====================================================================================================
     // 移動パラメタ
     //====================================================================================================
+    public int ID = 0;
     float actionTimer = 0.0f;
     public float moveTime = 2.0f;
     public float attackTime = 2.0f;
-    public Vector2 mapchipSize = new Vector2(64.0f, 64.0f);
+    public Vector2 mapchipSize = new Vector2(0.8f, 0.8f);
+    Vector2 startPos = new Vector2();
 
     protected bool isMove = false;
     protected bool isAttack = false;
-
+    public bool isGameOver = false;
 
     protected DIRECTION_TYPE directionType = DIRECTION_TYPE.NONE;
     protected Vector2 nextMovePos = new Vector2(0.0f, 0.0f);
@@ -97,11 +99,11 @@ public class Character : MonoBehaviour
         }
         isMove = true;
         // moveFlow.OnNext(0);
-        Debug.Log("StartMove");
+        //Debug.Log("StartMove");
 
     }
 
-    public void MoveAuto()
+    public virtual void MoveAuto()
     {
         ////　グラフィック更新
         //spriteRenderer.sprite = textureMap[dir];
@@ -116,9 +118,9 @@ public class Character : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(nowPos, targetDir, maxDistance);
 
-        if (hit)
+        if (hit && hit.collider.gameObject.name != this.gameObject.name)
         {
-            Debug.Log("衝突");
+            Debug.Log("衝突" + hit.collider.gameObject.name);
             return false;
         }
         else
@@ -147,7 +149,7 @@ public class Character : MonoBehaviour
             //Debug.Log(actionTimer);
             TurnEnd();
             isMove = false;
-            Debug.Log("EndMove");
+            //Debug.Log("EndMove");
         }
     }
 
@@ -164,5 +166,11 @@ public class Character : MonoBehaviour
     protected virtual void TurnEnd()
     {
         isMove = false;
+    }
+
+    public void GameOverEvent()
+    {
+        isGameOver = true;
+        transform.position = new Vector3(startPos.x, startPos.y, transform.position.z);
     }
 }
