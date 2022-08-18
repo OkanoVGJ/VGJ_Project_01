@@ -7,7 +7,8 @@ public class EnemyController : CharacterController
     //====================================================================================================
     // 変数
     //====================================================================================================
-   // protected List<Enemy> ControllEnemys = new List<Enemy>();
+    // protected List<Enemy> ControllEnemys = new List<Enemy>();
+    //PlayerController playerController = new PlayerController();
 
     //====================================================================================================
     // 初期化
@@ -19,6 +20,8 @@ public class EnemyController : CharacterController
         {
             controllCharacters.Add(e);
         }
+
+       // playerController = GameObject.FindObjectOfType<PlayerController>();
     }
 
 
@@ -29,7 +32,6 @@ public class EnemyController : CharacterController
     }
 
 
-
-
+   
 }
 
