@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MySceneManager 
+public class MySceneManager : MonoBehaviour
 {
+    [SerializeField]
     private string NowLoadingScene = "NowLoading";
 
-    public static void LoadNextScene(string NextSceneName)
+    public void LoadNextScene(string NextSceneName)
     {
         LoadProcess(NextSceneName);
     }
@@ -18,7 +19,6 @@ public class MySceneManager
 
         SceneManager.LoadSceneAsync("NowLoading",LoadSceneMode.Additive);
         yield return new WaitForSeconds(1);
-        yield return 
 
         var unloadOperation = SceneManager.UnloadSceneAsync(currentScene);
         var loadOperation = SceneManager.LoadSceneAsync(NextSceneName, LoadSceneMode.Additive);
@@ -29,7 +29,7 @@ public class MySceneManager
 
         if(sceneController != null)
         {
-            sceneController.OnOpenScene();
+            sceneController.
         }
     }
 }
