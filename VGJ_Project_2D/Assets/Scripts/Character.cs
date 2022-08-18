@@ -116,15 +116,19 @@ public class Character : MonoBehaviour
         Vector2 nowPos = this.transform.position;
         float maxDistance = mapchipSize.x;
 
-        RaycastHit2D hit = Physics2D.Raycast(nowPos, targetDir, maxDistance);
+ 
+        //RaycastHit2D hit = Physics2D.Raycast(nowPos, targetDir, maxDistance);
 
-        if (hit && hit.collider.gameObject.name != this.gameObject.name)
+        foreach (RaycastHit2D hit in Physics2D.RaycastAll(nowPos, targetDir, maxDistance))
         {
-            Debug.Log("衝突" + hit.collider.gameObject.name);
-            return false;
+            if (hit && hit.collider.gameObject.name != this.gameObject.name)
+            {
+                Debug.Log("衝突" + hit.collider.gameObject.name);
+                return false;
+            }
         }
-        else
-            return true;
+       
+        return true;
     }
 
     //====================================================================================================

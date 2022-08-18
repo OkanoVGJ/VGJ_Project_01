@@ -92,15 +92,18 @@ public class Enemy : Character
             if (targetDir.y >= 0)
             {
                 DirPriority.Add(DIRECTION_TYPE.FRONT);
+                //右はいかない
+                DirPriority.Add(DIRECTION_TYPE.LEFT);
                 DirPriority.Add(DIRECTION_TYPE.BACK);
             }
             else
             {
                 DirPriority.Add(DIRECTION_TYPE.BACK);
+                //右はいかない
+                DirPriority.Add(DIRECTION_TYPE.LEFT);
                 DirPriority.Add(DIRECTION_TYPE.FRONT);
             }
-            //右はいかない
-            DirPriority.Add(DIRECTION_TYPE.LEFT);
+           
         }
 
         foreach(var d in DirPriority)
