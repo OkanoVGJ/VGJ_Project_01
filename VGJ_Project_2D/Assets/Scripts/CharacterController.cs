@@ -17,7 +17,7 @@ public class CharacterController : MonoBehaviour
     //====================================================================================================
     // 変数
     //====================================================================================================
-    //protected List<Character> ControllCharacters = new List<Character>();
+    protected List<Character> controllCharacters = new List<Character>();
     protected bool isMovable;
 
     //// 移動パラメタ
@@ -73,5 +73,13 @@ public class CharacterController : MonoBehaviour
     //    //spriteRenderer.sprite = textureMap[dir];
     //    //nextMovePos = mapchipSize * moveVectors[dir];
     //}
+
+    public void StartAutoMoveEvent()
+    {
+        foreach (var chara in controllCharacters)
+        {
+            chara.MoveAuto();
+        }
+    }
 
 }

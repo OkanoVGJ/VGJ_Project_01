@@ -7,7 +7,7 @@ public class PlayerController : CharacterController
     //====================================================================================================
     // 変数
     //====================================================================================================
-    protected List<Player> ControllPlayers = new List<Player>();
+    //protected List<Player> ControllPlayers = new List<Player>();
     EnemyController enemyController = new EnemyController();
 
     //====================================================================================================
@@ -15,8 +15,13 @@ public class PlayerController : CharacterController
     //====================================================================================================
     void Start()
     {
-        ControllPlayers = GameObject.FindObjectsOfType<Player>();
-        enemyController = GameObject.FindObjectOfType<enemyController>();
+        var players = GameObject.FindObjectsOfType<Player>();
+        foreach(var p in players)
+        {
+            controllCharacters.Add(p);
+        }
+
+        enemyController = GameObject.FindObjectOfType<EnemyController>();
         isMovable = true;
     }
 
@@ -31,33 +36,33 @@ public class PlayerController : CharacterController
 
     void Input()
     {
-        if (Keyboard.current.FindKeyOnCurrenKeyboardLayout("A")){
-            MoveMessage(DIRECTION_TYPE.LEFT);
-            return;
-        }
-        if (Keyboard.current.FindKeyOnCurrenKeyboardLayout("W")){
-            MoveMessage(DIRECTION_TYPE.FRONT);
-            return;
-        }
-        if (Keyboard.current.FindKeyOnCurrenKeyboardLayout("S")){
-            MoveMessage(DIRECTION_TYPE.BACK);
-            return;
-        }
-        if (Keyboard.current.FindKeyOnCurrenKeyboardLayout("D")){
-            MoveMessage(DIRECTION_TYPE.RIGHT);
-            return;
-        }
+        //if (Keyboard.current.FindKeyOnCurrenKeyboardLayout("A")){
+        //    MoveMessage(DIRECTION_TYPE.LEFT);
+        //    return;
+        //}
+        //if (Keyboard.current.FindKeyOnCurrenKeyboardLayout("W")){
+        //    MoveMessage(DIRECTION_TYPE.FRONT);
+        //    return;
+        //}
+        //if (Keyboard.current.FindKeyOnCurrenKeyboardLayout("S")){
+        //    MoveMessage(DIRECTION_TYPE.BACK);
+        //    return;
+        //}
+        //if (Keyboard.current.FindKeyOnCurrenKeyboardLayout("D")){
+        //    MoveMessage(DIRECTION_TYPE.RIGHT);
+        //    return;
+        //}
 
     }
 
     void MoveMessage(DIRECTION_TYPE dir)
     {
         isMovable = false;
-        foreach (var chara in ControllPlayers)
+        foreach (var chara in controllCharacters)
         {
             chara.Move(dir);
         }
 
-        EnemyController.StartMoveEvetn();
+        enemyController.StartAutoMoveEvent();
     }
 }

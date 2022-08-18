@@ -7,14 +7,18 @@ public class EnemyController : CharacterController
     //====================================================================================================
     // 変数
     //====================================================================================================
-    protected List<Enemy> ControllEnemys = new List<Enemy>();
+   // protected List<Enemy> ControllEnemys = new List<Enemy>();
 
     //====================================================================================================
     // 初期化
     //====================================================================================================
     void Start()
     {
-        ControllEnemys = GameObject.FindObjectsOfType<Enemy>();
+        var enemys = GameObject.FindObjectsOfType<Enemy>();
+        foreach(var e in enemys)
+        {
+            controllCharacters.Add(e);
+        }
     }
 
 
@@ -24,17 +28,8 @@ public class EnemyController : CharacterController
         
     }
 
-    void UpdateTarget()
-    {
 
-    }
 
-    public void StartMoveEvent()
-    {
-        foreach (var chara in ControllEnemys)
-        {
-            chara.MoveAuto();
-        }
-    }
+
 }
 
