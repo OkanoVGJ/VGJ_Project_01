@@ -19,7 +19,7 @@ public class CharacterController : MonoBehaviour
     //====================================================================================================
     protected List<Character> controllCharacters = new List<Character>();
     protected bool isMovable;
-
+    public int elapseTurn = 0;
 
     //====================================================================================================
     // 初期化

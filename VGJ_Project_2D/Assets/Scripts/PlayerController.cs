@@ -11,10 +11,9 @@ public class PlayerController : CharacterController
     public bool enableInput = false;
     bool isAttackWait = false;
 
+    EnemyController enemyController = new EnemyController();
 
-   
-
- 
+    public SceneController sceneController = null;
 
     //====================================================================================================
     // 初期化
@@ -32,6 +31,8 @@ public class PlayerController : CharacterController
         //enemyController = GameObject.FindObjectOfType<EnemyController>();
         isMovable = true;
         enableInput = true;
+
+        enemyController = GameObject.FindObjectOfType<EnemyController>();
     }
 
 
@@ -45,16 +46,16 @@ public class PlayerController : CharacterController
 
     bool UpdateInput()
     {
-        Debug.Log("UpdateInput");
+        //Debug.Log("UpdateInput");
         if (!enableInput) 
         {
-            Debug.Log("DisableInput");
+            //Debug.Log("DisableInput");
             return false;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Fire");
+            //Debug.Log("Fire");
             isAttackWait = true;
             foreach (var p in controllCharacters)
             {
@@ -96,7 +97,7 @@ public class PlayerController : CharacterController
 
         if(dir != DIRECTION_TYPE.NONE)
         {
-            Debug.Log("Move");
+            //Debug.Log("Move");
             if (isAttackWait)
             {
                 AttackMessage(dir);
@@ -105,11 +106,15 @@ public class PlayerController : CharacterController
                 {
                     p.AttackRangeActive(isAttackWait);
                 }
+                elapseTurn++;
+                enemyController.elapseTurn = elapseTurn;
                 return true;
             }
             else
             {
                 MoveMessage(dir);
+                elapseTurn++;
+                enemyController.elapseTurn = elapseTurn;
                 return true;
             }
         }
@@ -163,7 +168,7 @@ public class PlayerController : CharacterController
 
     public void GameOverAll()
     {
-
+        sceneController.TransitionNextScene("Result");
     }
 
    

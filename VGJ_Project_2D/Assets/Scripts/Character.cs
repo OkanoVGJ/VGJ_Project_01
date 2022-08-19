@@ -41,10 +41,15 @@ public class Character : MonoBehaviour
     protected Vector2 goalPos = new Vector2(99, 99);
     public GameObject goalObject = null;
 
+    // 経過ターン
+    public int elapsedTurn = 0;
+    public bool isMoveActive = true;
+    public int activateTurn = 0;
+
     //====================================================================================================
     // グラフィック
     //====================================================================================================
-    protected SpriteRenderer spriteRenderer = null;
+    public SpriteRenderer spriteRenderer = null;
     public Dictionary<DIRECTION_TYPE, Sprite> textureMap = new Dictionary<DIRECTION_TYPE, Sprite>();
    
     // 攻撃範囲
@@ -78,6 +83,9 @@ public class Character : MonoBehaviour
 
     public void Move(DIRECTION_TYPE dir)
     {
+        if (!isMoveActive)
+            return;
+
         //　グラフィック更新
         //spriteRenderer.sprite = textureMap[dir];
 

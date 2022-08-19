@@ -15,7 +15,7 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
-        //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         enemyController = GameObject.FindObjectOfType<EnemyController>();
         playerController = GameObject.FindObjectOfType<PlayerController>();
 

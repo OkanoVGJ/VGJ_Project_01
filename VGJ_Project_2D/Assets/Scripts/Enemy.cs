@@ -13,21 +13,32 @@ public class Enemy : Character
 
     PlayerController playerController = new PlayerController();
     EnemyController enemyController = new EnemyController();
-   
+
+
+    //耐久
+    int hp = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-        //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         playerController = GameObject.FindObjectOfType<PlayerController>();
         enemyController = GameObject.FindObjectOfType<EnemyController>();
         if (goalObject != null)
         {
             goalPos = new Vector2(goalObject.transform.position.x, goalObject.transform.position.y);
         }
+
+        if(activateTurn > 0)
+        {
+            isMoveActive = false;
+            spriteRenderer.enabled = false;
+        }
        
     }
 
+
+  
 
     // Update is called once per frame
     void Update()
@@ -45,22 +56,51 @@ public class Enemy : Character
 
     protected override void TurnEnd()
     {
+        if (isAttacked)
+        {
+            hp--;
+            if(hp <= 0)
+            {
+                if (enemyController)
+                    enemyController.ReqRemove(this);
+                Destroy(this.gameObject);
+
+                if(enemyController && enemyController.GetTotalEnemy() <= 0)
+                {
+                    enemyController.ClearGame();
+                }
+            }
+        }
         Debug.Log("TurnEnd");
         isMove = false;
         isAttacked = false;
         knockbackDir = DIRECTION_TYPE.NONE;
+
+       
 
         if (IsGoal())
         {
             GoalEvent();
         }
 
+        if (enemyController)
+        {
+            enemyController.ElapseTurn();
+        }
+
         if (playerController != null)
+        {
             playerController.enableInput = true;
+        }
+
+
     }
 
     public override void MoveAuto()
     {
+        if (!isMoveActive)
+            return;
+
         //Debug.Log("MoveAuto");
         DIRECTION_TYPE dir = DIRECTION_TYPE.NONE;
         nowPos = new Vector2(transform.position.x, transform.position.y);
@@ -71,7 +111,6 @@ public class Enemy : Character
         else
         {
             dir = knockbackDir;
-           
         }
         Move(dir);
         prevDir = dir;
@@ -149,5 +188,9 @@ public class Enemy : Character
             playerController.GameOverPlayer(this.ID);
         }
         enemyController.ReqRemove(this as Character);
+        gameObject.SetActive(false);
+        goalObject.SetActive(false);
     }
+
+  
 }
