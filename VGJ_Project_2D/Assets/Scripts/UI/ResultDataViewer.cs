@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ResultDataViewer : MonoBehaviour
 {
+    [SerializeField]
+    private Image ClearImage;
 
     [SerializeField]
     private UiWD_ResultTreasureBox[] tresureBoxWidget;
     [SerializeField]
     private ResultData resultData;
+
+    [SerializeField]
+    private TMPro.TextMeshProUGUI ClearTimeText;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +35,8 @@ public class ResultDataViewer : MonoBehaviour
 
             }
         }
+        ClearTimeText.text = "クリアタイム：" + ((int)resultData.ClearTime).ToString() + " びょう";
+        ClearImage.enabled = resultData.IsClear;
     }
 
     // Update is called once per frame

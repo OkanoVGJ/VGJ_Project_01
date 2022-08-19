@@ -19,6 +19,10 @@ public class UI_StageSelect : MonoBehaviour
     [SerializeField]
     SceneController sceneController;
 
+    [SerializeField]
+    EventSystem eventSystem;
+
+
     int CurrentSelectStageIndex = 0;
     bool isTransition = false;
 
@@ -31,18 +35,7 @@ public class UI_StageSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            MoveSelectStageIndex(-1);
-            SetStageData();
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            MoveSelectStageIndex(1);
-            SetStageData();
-        }
-        */
+        eventSystem.SetSelectedGameObject(this.gameObject);
     }
 
     public void OnMove(BaseEventData eventData)

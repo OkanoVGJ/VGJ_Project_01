@@ -11,6 +11,11 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioSource[] SESource;
 
+    public void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     public void PlaySE(AudioClip SEClip)
     {
         foreach(var source in SESource)
