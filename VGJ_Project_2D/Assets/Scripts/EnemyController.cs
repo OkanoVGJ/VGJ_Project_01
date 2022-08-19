@@ -54,6 +54,7 @@ public class EnemyController : CharacterController
 
     public void ClearGame()
     {
+        Debug.Log("Clear Game");
         sceneController.TransitionNextScene("Result");
     }
 }

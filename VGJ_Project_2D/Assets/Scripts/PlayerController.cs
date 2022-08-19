@@ -168,6 +168,7 @@ public class PlayerController : CharacterController
 
     public void GameOverAll()
     {
+        Debug.Log("Game Over");
         sceneController.TransitionNextScene("Result");
     }
 
