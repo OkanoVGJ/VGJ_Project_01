@@ -46,14 +46,16 @@ public class PlayerController : CharacterController
 
     bool UpdateInput()
     {
+        Debug.Log("UpdateInput");
         if (!enableInput) 
         {
+            Debug.Log("DisableInput");
             return false;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //Debug.Log("Fire");
+            Debug.Log("Fire");
             isAttackWait = true;
             foreach (var p in controllCharacters)
             {
@@ -95,6 +97,7 @@ public class PlayerController : CharacterController
 
         if(dir != DIRECTION_TYPE.NONE)
         {
+            Debug.Log("Move");
             if (isAttackWait)
             {
                 AttackMessage(dir);

@@ -7,8 +7,7 @@ public class Enemy : Character
    
     //public Vector2 fieldSize = new Vector2();
     
-    Vector2 goalPos = new Vector2(99,99);
-    public GameObject goalObject = null;
+   
     List<Vector2> unmovablePos = new List<Vector2>();
     DIRECTION_TYPE prevDir = DIRECTION_TYPE.NONE;
 
