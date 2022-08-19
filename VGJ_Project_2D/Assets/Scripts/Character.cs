@@ -15,7 +15,9 @@ public class Character : MonoBehaviour
     public float moveTime = 2.0f;
     public float attackTime = 2.0f;
     public Vector2 mapchipSize = new Vector2(0.8f, 0.8f);
+
     Vector2 startPos = new Vector2();
+    public Vector2 nowPos = new Vector2();
 
     protected bool isMove = false;
     protected bool isAttack = false;
@@ -32,14 +34,16 @@ public class Character : MonoBehaviour
         {DIRECTION_TYPE.BACK, new Vector2(0,-1)},
     };
 
-    //Subject<int> moveFlow = new Subject<int>();
-    //Subject<int> attackFlow = new Subject<int>();
+    public bool isAttacked = false;
+    public DIRECTION_TYPE knockbackDir = DIRECTION_TYPE.NONE;
 
     //====================================================================================================
     // グラフィック
     //====================================================================================================
     protected SpriteRenderer spriteRenderer = null;
     public Dictionary<DIRECTION_TYPE, Sprite> textureMap = new Dictionary<DIRECTION_TYPE, Sprite>();
+    // 攻撃範囲
+    public GameObject attackRange = null;
 
     //====================================================================================================
     // 関数
@@ -49,16 +53,6 @@ public class Character : MonoBehaviour
     void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-
-        // ターンフロー
-        //moveFlow.Subscribe(
-        //    num => UpdateMove(),
-        //    () => TurnEnd());
-
-        //attackFlow.Subscribe(
-        //    num => UpdateAttack(),
-        //    () => TurnEnd());
-
     }
 
     // Update is called once per frame
@@ -131,6 +125,30 @@ public class Character : MonoBehaviour
         return true;
     }
 
+    public Vector2 CheckAttackDir(DIRECTION_TYPE dir)
+    {
+        Vector2 targetDir = moveVectors[dir];
+        Vector2 nowPos = this.transform.position;
+        float maxDistance = mapchipSize.x;
+
+        Vector2 effectPos = nowPos + targetDir * 2;
+
+
+        foreach (RaycastHit2D hit in Physics2D.RaycastAll(nowPos, targetDir, maxDistance * 2))
+        {
+            if (hit && hit.collider.gameObject.GetComponent<Character>() != null)
+            {
+                Character e = hit.collider.gameObject.GetComponent<Character>();
+                e.isAttacked = true;
+                e.knockbackDir = dir;
+                effectPos = new Vector2(e.transform.position.x, e.transform.position.y);
+
+                return effectPos;
+            }
+        }
+        return effectPos;
+    }
+
     //====================================================================================================
     // コルーチン(的なものになった）
     //====================================================================================================
@@ -176,5 +194,11 @@ public class Character : MonoBehaviour
     {
         isGameOver = true;
         transform.position = new Vector3(startPos.x, startPos.y, transform.position.z);
+    }
+
+    public void AttackRangeActive(bool enable)
+    {
+        if (attackRange != null)
+            attackRange.SetActive(enable);
     }
 }

@@ -12,18 +12,6 @@ public class PlayerController : CharacterController
     public bool enableInput = false;
     bool isAttackWait = false;
 
-    //TestInputActions testInputActions;
-
-    //EnemyController enemyController = new EnemyController();
-
-    //InputAction moveAction = new InputAction(
-    //type: InputActionType.Value,
-    // binding: "<Keyboard>/WASD");
-
-
-    //InputAction fireAction = new InputAction(
-    //type: InputActionType.PassThrough,
-    //binding: "<Keyboard>/<Fire>");
 
    
 
@@ -32,43 +20,6 @@ public class PlayerController : CharacterController
     //====================================================================================================
     // 初期化
     //====================================================================================================
-    //void Awake()
-    //{
-      
-
-    //    moveAction.started +=
-    //        ctx =>
-    //        {
-    //            Debug.Log("--- Stick Starts ---");
-    //        };
-    //    moveAction.performed +=
-    //        ctx =>
-    //        {
-    //            //Debug.Log("Stick Value: " + ctx.ReadValue<Vector2D>());
-    //        };
-    //    moveAction.canceled +=
-    //        ctx =>
-    //        {
-    //            Debug.Log("# Stick Released");
-    //        };
-
-    //    moveAction.Enable();
-
-
-
-    //    fireAction.performed +=
-    //ctx =>
-    //{
-    //    Debug.Log("fire");
-    //    //var button = (ButtonControl)ctx.control;
-    //    //if (button.wasPressedThisFrame)
-    //    //    Debug.Log($"Button {ctx.control} was pressed");
-    //    //else if (button.wasReleasedThisFrame)
-    //    //    Debug.Log($"Button {ctx.control} was released");
-    //};
-
-    //    fireAction.Enable();
-    //}
 
     void Start()
     {
@@ -83,6 +34,7 @@ public class PlayerController : CharacterController
         isMovable = true;
         enableInput = true;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -103,12 +55,21 @@ public class PlayerController : CharacterController
         {
             Debug.Log("Fire");
             isAttackWait = true;
+            foreach (var p in controllCharacters)
+            {
+                if (!p.isGameOver)
+                    p.AttackRangeActive(isAttackWait);
+            }
             return true;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isAttackWait = false;
+            foreach (var p in controllCharacters)
+            {
+                p.AttackRangeActive(isAttackWait);
+            }
             return true;
         }
 
@@ -137,6 +98,10 @@ public class PlayerController : CharacterController
             if (isAttackWait)
             {
                 AttackMessage(dir);
+                foreach (var p in controllCharacters)
+                {
+                    p.AttackRangeActive(isAttackWait);
+                }
                 return true;
             }
             else
@@ -197,57 +162,6 @@ public class PlayerController : CharacterController
 
     }
 
-    //====================================================================================================
-    // 入力イベント
-    //====================================================================================================
-    //public void OnMove(InputAction.CallbackContext context)
-    //{
-    //    if (!enableInput)
-    //    {
-    //        return;
-    //    }
-
-    //    if (context.started)
-    //    {
-    //        DIRECTION_TYPE dir = DIRECTION_TYPE.RIGHT;
-    //        if (isAttackWait)
-    //        {
-    //            AttackMessage(dir);
-    //        }
-    //        else
-    //        {
-    //            MoveMessage(dir);
-    //        }
-    //        Debug.Log("Move");
-    //    }
-    //}
-
-    //public void OnFire(InputAction.CallbackContext context)
-    //{
-    //    if (!enableInput)
-    //    {
-    //        return;
-    //    }
-
-
-    //    if (context.canceled)
-    //    {
-
-    //        isAttackWait = false;
-    //    }
-
-    //    if (!context.performed)
-    //    {
-    //        return;
-    //    }
-
-    //    if (context.started)
-    //    {
-    //        isAttackWait = true;
-    //        Debug.Log("fire");
-    //    }
-
-
-    //}
+   
 
 }
