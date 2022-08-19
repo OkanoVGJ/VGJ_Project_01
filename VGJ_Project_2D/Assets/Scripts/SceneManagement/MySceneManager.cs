@@ -23,13 +23,13 @@ public class MySceneManager : MonoBehaviour
         var unloadOperation = SceneManager.UnloadSceneAsync(currentScene);
         var loadOperation = SceneManager.LoadSceneAsync(NextSceneName, LoadSceneMode.Additive);
 
-        yield return new WatiUntil(unloadOperation.isDone && loadOperation.isDone);
+        yield return new WaitUntil(()=> { return unloadOperation.isDone && loadOperation.isDone; });
 
         var sceneController = GameObject.Find(NextSceneName).GetComponent<SceneController>();
 
         if(sceneController != null)
         {
-            sceneController.
+            sceneController.OnOpenScene();
         }
     }
 }
