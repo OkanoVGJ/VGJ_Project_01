@@ -6,6 +6,7 @@ using UnityEngine;
 public class ResultData : ScriptableObject
 {
     public string StageName = "TestScene";
+    public int AllChestNum = 0;
     public int SaveChestNum = 0;
     public float ClearTime = 0.0f;
     public int ClearTurn = 0;
