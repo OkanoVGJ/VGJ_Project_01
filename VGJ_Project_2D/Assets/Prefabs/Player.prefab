@@ -179,14 +179,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  moveTime: 0.5
-  attackTime: 1
+  moveTime: 0.25
+  attackTime: 0.5
   mapchipSize: {x: 0.8, y: 0.8}
   nowPos: {x: 0, y: 0}
   isGameOver: 0
   isAttacked: 0
   knockbackDir: 0
   attackRange: {fileID: 3834777715405714601}
+  attackEffect: {fileID: 3993597570799274896, guid: dc90cd4152a0ee44797c125f77b4d5f5,
+    type: 3}
 --- !u!61 &3989602049033656425
 BoxCollider2D:
   m_ObjectHideFlags: 0

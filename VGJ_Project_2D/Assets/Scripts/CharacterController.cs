@@ -65,4 +65,9 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    public void ReqRemove(Character chara)
+    {
+        controllCharacters.Remove(chara);
+    }
+
 }

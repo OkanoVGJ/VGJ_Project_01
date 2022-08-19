@@ -20,6 +20,11 @@ public class Player : Character
         playerController = GameObject.FindObjectOfType<PlayerController>();
 
         //attackRange = this.gameobject.transform.GetChild(0);
+
+        if (goalObject != null)
+        {
+            goalPos = new Vector2(goalObject.transform.position.x, goalObject.transform.position.y);
+        }
     }
 
     // Update is called once per frame
