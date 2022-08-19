@@ -204,8 +204,7 @@ MonoBehaviour:
   - {fileID: -7735284916963365620, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
   - {fileID: -197545893568397355, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
   attackRange: {fileID: 3834777715405714601}
-  attackEffect: {fileID: 3993597570799274896, guid: dc90cd4152a0ee44797c125f77b4d5f5,
-    type: 3}
+  attackEffect: {fileID: 100000, guid: 812e616e456c0674a9233a9d9503776a, type: 3}
 --- !u!61 &3989602049033656425
 BoxCollider2D:
   m_ObjectHideFlags: 0

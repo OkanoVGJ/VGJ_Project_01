@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6461548147794984153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.8, y: 3.65, z: -1}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,8 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2510652153309078752, guid: f6bd75c552380d8438ea7e359432164a,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: b657f42417516514ea02b79545175281, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -109,16 +108,16 @@ MonoBehaviour:
   activateTurn: 0
   spriteRenderer: {fileID: 0}
   animations1:
-  - {fileID: -2510652153309078752, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: -2510652153309078752, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: 5821496119728693254, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: 8758167801616195505, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: 3398892514296543630, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
+  - {fileID: 21300000, guid: b657f42417516514ea02b79545175281, type: 3}
+  - {fileID: 21300000, guid: 424a20ba8f24a9f4aa271227d43b7e5b, type: 3}
+  - {fileID: 21300000, guid: 6e3abf356d04dd5459abacf5e99db2cf, type: 3}
+  - {fileID: 21300000, guid: ff79d4d78f1296f4692f2dbccee2b934, type: 3}
+  - {fileID: 21300000, guid: b657f42417516514ea02b79545175281, type: 3}
   animations2:
-  - {fileID: 8552194644305130648, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: 8552194644305130648, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: 1468783492460351303, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: -4272483329967460962, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: 90069620431879689, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
+  - {fileID: 21300000, guid: b657f42417516514ea02b79545175281, type: 3}
+  - {fileID: 21300000, guid: 177d1065356766e47bde4106831a2f21, type: 3}
+  - {fileID: 21300000, guid: 5f199a37e0d84d943b3901b5c53a65f6, type: 3}
+  - {fileID: 21300000, guid: 2f94e16cd754de14d8d5f282b6dcb21d, type: 3}
+  - {fileID: 21300000, guid: bc3c4e098aa34b544849203f59ad2b45, type: 3}
   attackRange: {fileID: 0}
   attackEffect: {fileID: 0}
