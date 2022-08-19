@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    private Vector2 nowPos = new Vector2();
-    public Vector2 fieldSize = new Vector2();
+   
+    //public Vector2 fieldSize = new Vector2();
+    
     Vector2 goalPos = new Vector2(99,99);
     public GameObject goalObject = null;
     List<Vector2> unmovablePos = new List<Vector2>();
     DIRECTION_TYPE prevDir = DIRECTION_TYPE.NONE;
 
     PlayerController playerController = new PlayerController();
+
+   
 
     // Start is called before the first frame update
     void Start()
@@ -56,9 +59,17 @@ public class Enemy : Character
 
     public override void MoveAuto()
     {
-        Debug.Log("MoveAuto");
+        //Debug.Log("MoveAuto");
+        DIRECTION_TYPE dir = DIRECTION_TYPE.NONE;
         nowPos = new Vector2(transform.position.x, transform.position.y);
-        DIRECTION_TYPE dir =  SearchForNextDir();
+        if (!isAttacked)
+        {
+            dir = SearchForNextDir();
+        }
+        else
+        {
+            dir = knockbackDir;
+        }
         Move(dir);
         prevDir = dir;
     }

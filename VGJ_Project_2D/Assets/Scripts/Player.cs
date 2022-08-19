@@ -8,6 +8,9 @@ public class Player : Character
     EnemyController enemyController = new EnemyController();
     PlayerController playerController = new PlayerController();
 
+    // 攻撃範囲
+    //public GameObject attackRange = null;
+
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +18,8 @@ public class Player : Character
         //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         enemyController = GameObject.FindObjectOfType<EnemyController>();
         playerController = GameObject.FindObjectOfType<PlayerController>();
+
+        //attackRange = this.gameobject.transform.GetChild(0);
     }
 
     // Update is called once per frame
@@ -47,5 +52,5 @@ public class Player : Character
             playerController.enableInput = true;
     }
 
-   
+  
 }
