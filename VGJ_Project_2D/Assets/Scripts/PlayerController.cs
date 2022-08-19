@@ -14,6 +14,7 @@ public class PlayerController : CharacterController
     EnemyController enemyController = new EnemyController();
 
     public SceneController sceneController = null;
+    public ResultData ResultData;
 
     //====================================================================================================
     // 初期化
@@ -35,6 +36,7 @@ public class PlayerController : CharacterController
         enemyController = GameObject.FindObjectOfType<EnemyController>();
 
         sceneController = GameObject.FindObjectOfType<SceneController>();
+        ResultData.SaveChestNum = 3;
     }
 
 
@@ -156,7 +158,7 @@ public class PlayerController : CharacterController
     public void GameOverPlayer(int id)
     {
         controllCharacters[id].GameOverEvent();
-
+        ResultData.SaveChestNum--;
         //
         foreach(var p in controllCharacters)
         {
@@ -171,6 +173,9 @@ public class PlayerController : CharacterController
     public void GameOverAll()
     {
         Debug.Log("Game Over");
+        ResultData.ClearTime = sceneController.GetTime();
+        ResultData.AllChestNum = 3;
+        ResultData.IsClear = false;
         sceneController.TransitionNextScene("Result");
     }
 

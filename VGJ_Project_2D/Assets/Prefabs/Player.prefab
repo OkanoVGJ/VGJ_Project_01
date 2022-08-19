@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 3834777714825215263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.12, y: 2.83, z: -1}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 3834777715405714600}
   m_Father: {fileID: 0}
@@ -154,8 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2078881194504871728, guid: f6bd75c552380d8438ea7e359432164a,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 792d486de0b0818459e8cc82be7634c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -192,17 +191,17 @@ MonoBehaviour:
   activateTurn: 0
   spriteRenderer: {fileID: 0}
   animations1:
-  - {fileID: 2078881194504871728, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: 2078881194504871728, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: -168492958611189563, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: -1725288617209090181, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: -3712280048325084179, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
+  - {fileID: 21300000, guid: a9ff3707d46100e48a02cf2a80e0f25c, type: 3}
+  - {fileID: 21300000, guid: d96179d14e52c94489c5cd0cfcb71ef3, type: 3}
+  - {fileID: 21300000, guid: 44033195d0f660f4baafb1755fc172d4, type: 3}
+  - {fileID: 21300000, guid: 29fbe6fcb44d32b42bb643ba8a62be7f, type: 3}
+  - {fileID: 21300000, guid: a9ff3707d46100e48a02cf2a80e0f25c, type: 3}
   animations2:
-  - {fileID: -9037984348513871785, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: -9037984348513871785, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: 1863368656225807089, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: -7735284916963365620, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
-  - {fileID: -197545893568397355, guid: f6bd75c552380d8438ea7e359432164a, type: 3}
+  - {fileID: 21300000, guid: a9ff3707d46100e48a02cf2a80e0f25c, type: 3}
+  - {fileID: 21300000, guid: a1c43ac56b150794eb13548b7c129198, type: 3}
+  - {fileID: 21300000, guid: 792d486de0b0818459e8cc82be7634c3, type: 3}
+  - {fileID: 21300000, guid: 5a2fb038835d3f14588e9ba46c43e935, type: 3}
+  - {fileID: 21300000, guid: a4f46b942e7bd1346824dde97f9b9734, type: 3}
   attackRange: {fileID: 3834777715405714601}
   attackEffect: {fileID: 100000, guid: 812e616e456c0674a9233a9d9503776a, type: 3}
 --- !u!61 &3989602049033656425
@@ -222,7 +221,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

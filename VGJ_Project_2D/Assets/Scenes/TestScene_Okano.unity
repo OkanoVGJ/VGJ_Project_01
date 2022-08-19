@@ -136,6 +136,14 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 0.32
       objectReference: {fileID: 0}
+    - target: {fileID: 1783908516, guid: 49b9dd4a413ad7a449aa04816938a35a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783908516, guid: 49b9dd4a413ad7a449aa04816938a35a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
     - target: {fileID: 3406247424890574268, guid: 49b9dd4a413ad7a449aa04816938a35a,
         type: 3}
       propertyPath: m_RootOrder
@@ -205,7 +213,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2078881194504871728, guid: f6bd75c552380d8438ea7e359432164a,
+      objectReference: {fileID: 21300000, guid: 44033195d0f660f4baafb1755fc172d4,
         type: 3}
     - target: {fileID: 3406247424890574269, guid: 49b9dd4a413ad7a449aa04816938a35a,
         type: 3}
@@ -4585,6 +4593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92d7f82020ace1418c4089ad171ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGMClip: {fileID: 0}
 --- !u!4 &1536142715
 Transform:
   m_ObjectHideFlags: 0
@@ -4757,6 +4766,14 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 0.32
       objectReference: {fileID: 0}
+    - target: {fileID: 1783908516, guid: 49b9dd4a413ad7a449aa04816938a35a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783908516, guid: 49b9dd4a413ad7a449aa04816938a35a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.32
+      objectReference: {fileID: 0}
     - target: {fileID: 3406247424890574268, guid: 49b9dd4a413ad7a449aa04816938a35a,
         type: 3}
       propertyPath: m_RootOrder
@@ -4816,7 +4833,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2078881194504871728, guid: f6bd75c552380d8438ea7e359432164a,
+      objectReference: {fileID: 21300000, guid: 44033195d0f660f4baafb1755fc172d4,
         type: 3}
     - target: {fileID: 3406247424890574269, guid: 49b9dd4a413ad7a449aa04816938a35a,
         type: 3}

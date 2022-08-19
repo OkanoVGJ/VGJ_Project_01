@@ -11,6 +11,7 @@ public class EnemyController : CharacterController
     //PlayerController playerController = new PlayerController();
 
     public SceneController sceneController = null;
+    public ResultData result;
 
     //====================================================================================================
     // 初期化
@@ -60,6 +61,8 @@ public class EnemyController : CharacterController
     public void ClearGame()
     {
         Debug.Log("Clear Game");
+        result.ClearTime = sceneController.GetTime();
+        result.IsClear = true;
         sceneController.TransitionNextScene("Result");
     }
 }

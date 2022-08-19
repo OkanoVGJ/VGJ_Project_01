@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     AudioClip BGMClip;
 
+    private float GameTime = 0.0f;
 
     public virtual void OnOpenScene()
     {
@@ -17,6 +19,12 @@ public class SceneController : MonoBehaviour
         {
             soundManager.PlayBGM(BGMClip);
         }
+        GameTime = 0.0f;
+    }
+
+    public void Update()
+    {
+        GameTime += Time.deltaTime;
     }
 
     public void SetSceneManager(MySceneManager manager)
@@ -43,4 +51,8 @@ public class SceneController : MonoBehaviour
     {
     }
 
+    internal float GetTime()
+    {
+        return GameTime;
+    }
 }
