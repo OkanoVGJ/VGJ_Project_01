@@ -23,7 +23,9 @@ public class EnemyController : CharacterController
             controllCharacters.Add(e);
         }
 
-       // playerController = GameObject.FindObjectOfType<PlayerController>();
+        sceneController = GameObject.FindObjectOfType<SceneController>();
+
+        // playerController = GameObject.FindObjectOfType<PlayerController>();
     }
 
 

@@ -16,7 +16,7 @@ public class Enemy : Character
 
 
     //耐久
-    int hp = 3;
+    int hp = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +78,7 @@ public class Enemy : Character
         if (isAttacked)
         {
             hp--;
+            spriteRenderer.color = new Color(1, 0.25f, 0.25f);
             if(hp <= 0)
             {
                 if (enemyController)
@@ -131,7 +132,34 @@ public class Enemy : Character
         {
             dir = knockbackDir;
         }
-        Move(dir);
+
+        float moveRate = 1.0f;
+        if (hitPlayerWait)
+            moveRate = 0;
+
+        Move(dir, moveRate);
+
+        if (isAttacked)
+        {
+            switch (dir)
+            {
+                case DIRECTION_TYPE.FRONT:
+                    directionType = DIRECTION_TYPE.BACK;
+                    break;
+                case DIRECTION_TYPE.BACK:
+                    directionType = DIRECTION_TYPE.FRONT;
+                    break;
+                        case DIRECTION_TYPE.RIGHT:
+                    directionType = DIRECTION_TYPE.LEFT;
+                    break;
+                case DIRECTION_TYPE.LEFT:
+                    directionType = DIRECTION_TYPE.RIGHT;
+                    break;
+                default:
+                    break;
+            }
+            
+        }
         prevDir = dir;
         //isAttacked = false;
         //knockbackDir = DIRECTION_TYPE.NONE;
@@ -182,13 +210,40 @@ public class Enemy : Character
 
         foreach(var d in DirPriority)
         {
-            if (CheckMovableDir(d))
+            if (CheckMovableDirEx(d))
             {
                 return d;
             }
         }
 
        return DIRECTION_TYPE.NONE;
+    }
+
+    bool hitPlayerWait = false;
+    public bool CheckMovableDirEx(DIRECTION_TYPE dir)
+    {
+        hitPlayerWait = false;
+
+        Vector2 targetDir = moveVectors[dir];
+        Vector2 nowPos = this.transform.position;
+        float maxDistance = mapchipSize.x;
+
+
+        //RaycastHit2D hit = Physics2D.Raycast(nowPos, targetDir, maxDistance);
+
+        foreach (RaycastHit2D hit in Physics2D.RaycastAll(nowPos, targetDir, maxDistance))
+        {
+            if (hit && hit.collider.gameObject.name != this.gameObject.name)
+            {
+                Debug.Log("衝突" + hit.collider.gameObject.name);
+                if (hit.collider.gameObject.GetType() != typeof(Player))
+                    return false;
+                else
+                    hitPlayerWait = true;
+            }
+        }
+
+        return true;
     }
 
     bool IsGoal()

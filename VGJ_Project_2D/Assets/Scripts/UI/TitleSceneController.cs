@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TitleSceneController : MonoBehaviour
 {
-    [SerializeField]
     private MySceneManager sceneManager;
 
     public void TransitionScene()

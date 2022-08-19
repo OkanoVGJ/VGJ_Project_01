@@ -33,6 +33,8 @@ public class PlayerController : CharacterController
         enableInput = true;
 
         enemyController = GameObject.FindObjectOfType<EnemyController>();
+
+        sceneController = GameObject.FindObjectOfType<SceneController>();
     }
 
 

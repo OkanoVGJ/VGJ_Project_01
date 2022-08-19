@@ -8,7 +8,8 @@ public class MySceneManager : MonoBehaviour
 
     private string FirstScene = "Title";
     private static string NowLoadingScene = "NowLoading";
-
+    [SerializeField]
+    SoundManager SoundManager;
 
     public void Awake()
     {
@@ -53,9 +54,9 @@ public class MySceneManager : MonoBehaviour
 
         if (sceneController != null)
         {
+            sceneController.SetSoundManager(SoundManager);
+            sceneController.SetSceneManager(this);
             sceneController.OnOpenScene();
-            sceneController.SetSceneManager(this); 
-
         }
     }
 

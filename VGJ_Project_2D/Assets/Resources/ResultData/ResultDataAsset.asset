@@ -17,4 +17,4 @@ MonoBehaviour:
   SaveChestNum: 2
   ClearTime: 0
   ClearTurn: 0
-  IsClear: 0
+  IsClear: 1
