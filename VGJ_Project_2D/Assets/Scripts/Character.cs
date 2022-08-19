@@ -50,7 +50,28 @@ public class Character : MonoBehaviour
     // グラフィック
     //====================================================================================================
     public SpriteRenderer spriteRenderer = null;
-    public Dictionary<DIRECTION_TYPE, Sprite> textureMap = new Dictionary<DIRECTION_TYPE, Sprite>();
+    public Dictionary<DIRECTION_TYPE, Sprite> textureMap1 = new Dictionary<DIRECTION_TYPE, Sprite>();
+    public Dictionary<DIRECTION_TYPE, Sprite> textureMap2 = new Dictionary<DIRECTION_TYPE, Sprite>();
+    public Sprite[] animations1 = new Sprite[5];
+    public Sprite[] animations2 = new Sprite[5];
+
+    private float animChangeTime = 0.2f;
+    private float animTimer;
+    bool animChanged = false;
+
+    protected void UpdateAnim()
+    {
+        animTimer += Time.deltaTime;
+        if(animTimer >= animChangeTime)
+        {
+            if (animChanged)
+                spriteRenderer.sprite = textureMap1[directionType];
+            else
+                spriteRenderer.sprite = textureMap2[directionType];
+            animChanged = !animChanged;
+            animTimer = 0;
+        }
+    }
    
     // 攻撃範囲
     public GameObject attackRange = null;
@@ -65,7 +86,24 @@ public class Character : MonoBehaviour
     void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+        textureMap1 = new Dictionary<DIRECTION_TYPE, Sprite>() {
+            { DIRECTION_TYPE.NONE, animations1[0] },
+            { DIRECTION_TYPE.FRONT, animations1[1] },
+            { DIRECTION_TYPE.RIGHT, animations1[2] },
+            { DIRECTION_TYPE.LEFT, animations1[3] },
+            { DIRECTION_TYPE.BACK, animations1[4] },
+        };
+
+        textureMap2 = new Dictionary<DIRECTION_TYPE, Sprite>() {
+            { DIRECTION_TYPE.NONE, animations2[0] },
+            { DIRECTION_TYPE.FRONT, animations2[1] },
+            { DIRECTION_TYPE.RIGHT, animations2[2] },
+            { DIRECTION_TYPE.LEFT, animations2[3] },
+            { DIRECTION_TYPE.BACK, animations2[4] },
+        };
     }
+
 
     // Update is called once per frame
     void Update()
@@ -79,6 +117,8 @@ public class Character : MonoBehaviour
         {
             UpdateAttack();
         }
+
+        UpdateAnim();
     }
 
     public void Move(DIRECTION_TYPE dir)
@@ -91,6 +131,7 @@ public class Character : MonoBehaviour
 
         actionTimer = 0;
         prevPos = transform.position;
+        directionType = dir;
 
         if (CheckMovableDir(dir))
         {

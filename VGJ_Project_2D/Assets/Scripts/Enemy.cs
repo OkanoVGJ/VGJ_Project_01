@@ -22,6 +22,23 @@ public class Enemy : Character
     void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        textureMap1 = new Dictionary<DIRECTION_TYPE, Sprite>() {
+            { DIRECTION_TYPE.NONE, animations1[0] },
+            { DIRECTION_TYPE.FRONT, animations1[1] },
+            { DIRECTION_TYPE.RIGHT, animations1[2] },
+            { DIRECTION_TYPE.LEFT, animations1[3] },
+            { DIRECTION_TYPE.BACK, animations1[4] },
+        };
+
+        textureMap2 = new Dictionary<DIRECTION_TYPE, Sprite>() {
+            { DIRECTION_TYPE.NONE, animations2[0] },
+            { DIRECTION_TYPE.FRONT, animations2[1] },
+            { DIRECTION_TYPE.RIGHT, animations2[2] },
+            { DIRECTION_TYPE.LEFT, animations2[3] },
+            { DIRECTION_TYPE.BACK, animations2[4] },
+        };
+
+
         playerController = GameObject.FindObjectOfType<PlayerController>();
         enemyController = GameObject.FindObjectOfType<EnemyController>();
         if (goalObject != null)
@@ -52,6 +69,8 @@ public class Enemy : Character
         {
             UpdateAttack();
         }
+
+        UpdateAnim();
     }
 
     protected override void TurnEnd()
