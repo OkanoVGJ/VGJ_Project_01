@@ -4,9 +4,30 @@ using UnityEngine;
 
 public class SceneController : MonoBehaviour
 {
+    protected MySceneManager sceneManager;
+
     public virtual void OnOpenScene()
     {
 
     }
 
+    public void SetSceneManager(MySceneManager manager)
+    {
+        sceneManager = manager;
+    }
+
+    public void TransitionNextScene(string SceneName)
+    {
+        sceneManager.LoadNextScene(SceneName);
+    }
+
+    void Start()
+    {
+        StartCoroutine(TransitionTest());
+    }
+    private IEnumerator TransitionTest()
+    {
+           yield return new WaitForSeconds(5.0f);
+            TransitionNextScene("result");
+    }
 }

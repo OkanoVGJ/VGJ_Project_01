@@ -5,15 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class MySceneManager : MonoBehaviour
 {
-    [SerializeField]
-    private string NowLoadingScene = "NowLoading";
+
+
+    private static string NowLoadingScene = "NowLoading";
+
+
+
+    public void Start()
+    {
+        InitializeSceneController("Title");
+    }
+
 
     public void LoadNextScene(string NextSceneName)
     {
-        LoadProcess(NextSceneName);
+        StartCoroutine(LoadProcess(NextSceneName));
     }
 
-    private  IEnumerator LoadProcess(string NextSceneName)
+    private IEnumerator LoadProcess(string NextSceneName)
     {
         var currentScene = SceneManager.GetActiveScene();
 
@@ -25,11 +34,18 @@ public class MySceneManager : MonoBehaviour
 
         yield return new WaitUntil(()=> { return unloadOperation.isDone && loadOperation.isDone; });
 
-        var sceneController = GameObject.Find(NextSceneName).GetComponent<SceneController>();
+        InitializeSceneController(NextSceneName);
+    }
 
-        if(sceneController != null)
+
+    private void InitializeSceneController(string SceneName)
+    {
+        var sceneController = GameObject.Find(SceneName).GetComponent<SceneController>();
+
+        if (sceneController != null)
         {
             sceneController.OnOpenScene();
+            sceneController.SetSceneManager(this);
         }
     }
 }
