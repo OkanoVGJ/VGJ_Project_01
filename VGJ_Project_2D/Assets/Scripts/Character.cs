@@ -55,7 +55,7 @@ public class Character : MonoBehaviour
     public Sprite[] animations1 = new Sprite[5];
     public Sprite[] animations2 = new Sprite[5];
 
-    private float animChangeTime = 0.2f;
+    private float animChangeTime = 0.6f;
     private float animTimer;
     bool animChanged = false;
 
@@ -121,7 +121,7 @@ public class Character : MonoBehaviour
         UpdateAnim();
     }
 
-    public void Move(DIRECTION_TYPE dir)
+    public void Move(DIRECTION_TYPE dir, float rate = 1.0f)
     {
         if (!isMoveActive)
             return;
@@ -136,7 +136,7 @@ public class Character : MonoBehaviour
         if (CheckMovableDir(dir))
         {
            
-            nextMovePos = mapchipSize * moveVectors[dir];
+            nextMovePos = mapchipSize * moveVectors[dir] * rate;
             //Debug.Log("NextMove = " + nextMovePos);
            
         }
