@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: ResultDataAsset
   m_EditorClassIdentifier: 
   StageName: TestScene
-  SaveChestNum: 0
+  AllChestNum: 5
+  SaveChestNum: 2
   ClearTime: 0
   ClearTurn: 0
   IsClear: 0
