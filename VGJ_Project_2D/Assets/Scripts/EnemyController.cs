@@ -32,7 +32,10 @@ public class EnemyController : CharacterController
     // Update is called once per frame
     void Update()
     {
-        
+        if(controllCharacters.Count == 0)
+        {
+            ClearGame();
+        }
     }
 
     public void ElapseTurn()

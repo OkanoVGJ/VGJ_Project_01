@@ -295,12 +295,12 @@ MonoBehaviour:
   RightCursor: {fileID: 192570186}
   LeftCursor: {fileID: 1959756009}
   StageList:
-  - {fileID: 11400000, guid: 40a12a413f672b7499afeb7ab9d2635b, type: 2}
   - {fileID: 11400000, guid: d380fdc35e2764f4eb7ea6dac0bca452, type: 2}
   - {fileID: 11400000, guid: 480e977112347a44d866832749356cc7, type: 2}
-  - {fileID: 11400000, guid: 36b294e1f99b5f142a8f7f0217ade21c, type: 2}
   sceneController: {fileID: 1442169150}
   eventSystem: {fileID: 817949306}
+  DecideSE: {fileID: 8300000, guid: 8d26f611d92d3c0478fd4fce62cd005c, type: 3}
+  SelectSE: {fileID: 8300000, guid: 85c8773b45d2e0746a5d98dde00164d7, type: 3}
 --- !u!1 &389744183
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92d7f82020ace1418c4089ad171ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMClip: {fileID: 8300000, guid: 033766cc31c97904bae4404b8a079544, type: 3}
+  BGMClip: {fileID: 8300000, guid: 63bc9f4dc6b281c4b8568c1718d7c29c, type: 3}
 --- !u!1 &1642020707
 GameObject:
   m_ObjectHideFlags: 0

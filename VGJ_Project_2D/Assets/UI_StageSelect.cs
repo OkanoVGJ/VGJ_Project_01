@@ -22,6 +22,12 @@ public class UI_StageSelect : MonoBehaviour
     [SerializeField]
     EventSystem eventSystem;
 
+    [SerializeField]
+    AudioClip DecideSE;
+
+    [SerializeField]
+    AudioClip SelectSE;
+
 
     int CurrentSelectStageIndex = 0;
     bool isTransition = false;
@@ -51,6 +57,8 @@ public class UI_StageSelect : MonoBehaviour
             default:
                 break;
         }
+
+        sceneController.PlaySE(SelectSE);
         SetStageData();
     }
 
@@ -67,6 +75,7 @@ public class UI_StageSelect : MonoBehaviour
     {
         if (!isTransition)
         {
+            sceneController.PlaySE(DecideSE);
             sceneController.TransitionNextScene(StageList[CurrentSelectStageIndex].StageSceneName);
             isTransition = true;
         }

@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene_Okano.unity
     guid: 83c33443e579a324ab0c27ee8b9ace25
+  - enabled: 1
+    path: Assets/Scenes/Stage/Stage_00.unity
+    guid: 4fb04171931b2394cb15db574f65544c
+  - enabled: 1
+    path: Assets/Scenes/Stage/Stage_2.unity
+    guid: bcc5dceef81f84f4a891ee180b219d55
   m_configObjects: {}
