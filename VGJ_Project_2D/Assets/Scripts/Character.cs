@@ -222,7 +222,7 @@ public class Character : MonoBehaviour
     public void GameOverEvent()
     {
         isGameOver = true;
-        transform.position = new Vector3(startPos.x, startPos.y, transform.position.z);
+        transform.position = new Vector3(goalPos.x, goalPos.y, transform.position.z);
     }
 
     public void AttackRangeActive(bool enable)
