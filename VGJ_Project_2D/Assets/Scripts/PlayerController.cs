@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : CharacterController
 {
@@ -151,6 +150,7 @@ public class PlayerController : CharacterController
     {
         controllCharacters[id].GameOverEvent();
 
+        //
         foreach(var p in controllCharacters)
         {
             if (!p.isGameOver)

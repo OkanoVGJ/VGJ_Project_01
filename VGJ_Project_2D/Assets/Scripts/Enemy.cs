@@ -12,7 +12,7 @@ public class Enemy : Character
     DIRECTION_TYPE prevDir = DIRECTION_TYPE.NONE;
 
     PlayerController playerController = new PlayerController();
-
+    EnemyController enemyController = new EnemyController();
    
 
     // Start is called before the first frame update
@@ -20,7 +20,8 @@ public class Enemy : Character
     {
         //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         playerController = GameObject.FindObjectOfType<PlayerController>();
-        if(goalObject != null)
+        enemyController = GameObject.FindObjectOfType<EnemyController>();
+        if (goalObject != null)
         {
             goalPos = new Vector2(goalObject.transform.position.x, goalObject.transform.position.y);
         }
@@ -134,7 +135,7 @@ public class Enemy : Character
 
     bool IsGoal()
     {
-        if(nowPos == goalPos)
+        if((goalPos - nowPos).magnitude < mapchipSize.x)
         {
             return true;
         }
@@ -143,6 +144,10 @@ public class Enemy : Character
 
     void GoalEvent()
     {
-
+        if (playerController != null)
+        {
+            playerController.GameOverPlayer(this.ID);
+        }
+        enemyController.ReqRemove(this as Character);
     }
 }
