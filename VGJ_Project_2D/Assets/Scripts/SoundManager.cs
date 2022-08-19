@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour
     {
         foreach(var source in SESource)
         {
-            if(source.isPlaying)
+            if(!source.isPlaying)
             {
                 source.clip = SEClip;
                 source.loop = false;
