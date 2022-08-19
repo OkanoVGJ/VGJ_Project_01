@@ -16,6 +16,23 @@ public class Player : Character
     void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        textureMap1 = new Dictionary<DIRECTION_TYPE, Sprite>() {
+            { DIRECTION_TYPE.NONE, animations1[0] },
+            { DIRECTION_TYPE.FRONT, animations1[1] },
+            { DIRECTION_TYPE.RIGHT, animations1[2] },
+            { DIRECTION_TYPE.LEFT, animations1[3] },
+            { DIRECTION_TYPE.BACK, animations1[4] },
+        };
+
+        textureMap2 = new Dictionary<DIRECTION_TYPE, Sprite>() {
+            { DIRECTION_TYPE.NONE, animations2[0] },
+            { DIRECTION_TYPE.FRONT, animations2[1] },
+            { DIRECTION_TYPE.RIGHT, animations2[2] },
+            { DIRECTION_TYPE.LEFT, animations2[3] },
+            { DIRECTION_TYPE.BACK, animations2[4] },
+        };
+
+
         enemyController = GameObject.FindObjectOfType<EnemyController>();
         playerController = GameObject.FindObjectOfType<PlayerController>();
 
@@ -39,6 +56,8 @@ public class Player : Character
         {
             UpdateAttack();
         }
+
+        UpdateAnim();
     }
 
     protected override void TurnEnd()

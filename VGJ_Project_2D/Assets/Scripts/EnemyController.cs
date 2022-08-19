@@ -38,7 +38,7 @@ public class EnemyController : CharacterController
         foreach(var e in controllCharacters)
         {
             e.elapsedTurn = elapseTurn;
-            Debug.Log("経過ターン" + elapseTurn);
+            //Debug.Log("経過ターン" + elapseTurn);
             if(!e.isMoveActive && e.activateTurn <= e.elapsedTurn)
             {
                 e.isMoveActive = true;
