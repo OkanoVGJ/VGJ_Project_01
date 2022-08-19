@@ -47,6 +47,8 @@ public class Enemy : Character
     {
         Debug.Log("TurnEnd");
         isMove = false;
+        isAttacked = false;
+        knockbackDir = DIRECTION_TYPE.NONE;
 
         if (IsGoal())
         {
@@ -69,9 +71,12 @@ public class Enemy : Character
         else
         {
             dir = knockbackDir;
+           
         }
         Move(dir);
         prevDir = dir;
+        //isAttacked = false;
+        //knockbackDir = DIRECTION_TYPE.NONE;
     }
 
     //====================================================================================================

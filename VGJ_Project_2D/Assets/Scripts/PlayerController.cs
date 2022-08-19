@@ -27,7 +27,7 @@ public class PlayerController : CharacterController
         foreach(var p in players)
         {
             controllCharacters.Add(p);
-            Debug.Log(p.name);
+            //Debug.Log(p.name);
         }
 
         //enemyController = GameObject.FindObjectOfType<EnemyController>();
@@ -53,14 +53,14 @@ public class PlayerController : CharacterController
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Fire");
+            //Debug.Log("Fire");
             isAttackWait = true;
             foreach (var p in controllCharacters)
             {
                 if (!p.isGameOver)
                     p.AttackRangeActive(isAttackWait);
             }
-            return true;
+            return false;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
@@ -70,7 +70,7 @@ public class PlayerController : CharacterController
             {
                 p.AttackRangeActive(isAttackWait);
             }
-            return true;
+            return false;
         }
 
 
@@ -98,6 +98,7 @@ public class PlayerController : CharacterController
             if (isAttackWait)
             {
                 AttackMessage(dir);
+                isAttackWait = false;
                 foreach (var p in controllCharacters)
                 {
                     p.AttackRangeActive(isAttackWait);
@@ -117,7 +118,7 @@ public class PlayerController : CharacterController
 
     void MoveMessage(DIRECTION_TYPE dir)
     {
-        Debug.Log("Move");
+        //Debug.Log("Move");
         isMovable = false;
         foreach (var chara in controllCharacters)
         {
@@ -131,12 +132,12 @@ public class PlayerController : CharacterController
 
     void AttackMessage(DIRECTION_TYPE dir)
     {
-        Debug.Log("Attack");
+        //Debug.Log("Attack");
         isMovable = false;
         foreach (var chara in controllCharacters)
         {
             if (!chara.isGameOver)
-                chara.Move(dir);
+                chara.Attack(dir);
         }
 
         //if (enemyController != null)

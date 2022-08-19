@@ -42,8 +42,11 @@ public class Character : MonoBehaviour
     //====================================================================================================
     protected SpriteRenderer spriteRenderer = null;
     public Dictionary<DIRECTION_TYPE, Sprite> textureMap = new Dictionary<DIRECTION_TYPE, Sprite>();
+   
     // 攻撃範囲
     public GameObject attackRange = null;
+    public GameObject attackEffect = null;
+    private GameObject activeEffect = null;
 
     //====================================================================================================
     // 関数
@@ -125,6 +128,17 @@ public class Character : MonoBehaviour
         return true;
     }
 
+    public void Attack(DIRECTION_TYPE dir)
+    {
+        actionTimer = 0;
+        prevPos = transform.position;
+        isAttack = true;
+
+        Vector2 v = CheckAttackDir(dir);
+        if(attackEffect != null)
+            activeEffect = Instantiate(attackEffect, v, Quaternion.identity);
+    }
+
     public Vector2 CheckAttackDir(DIRECTION_TYPE dir)
     {
         Vector2 targetDir = moveVectors[dir];
@@ -136,8 +150,9 @@ public class Character : MonoBehaviour
 
         foreach (RaycastHit2D hit in Physics2D.RaycastAll(nowPos, targetDir, maxDistance * 2))
         {
-            if (hit && hit.collider.gameObject.GetComponent<Character>() != null)
+            if (hit && hit.collider.gameObject.GetComponent<Enemy>() != null)
             {
+                Debug.Log("Hit Enemy");
                 Character e = hit.collider.gameObject.GetComponent<Character>();
                 e.isAttacked = true;
                 e.knockbackDir = dir;
@@ -182,6 +197,8 @@ public class Character : MonoBehaviour
         {
             TurnEnd();
             isAttack = false;
+            if(activeEffect != null)
+                Destroy(activeEffect);
         }
     }
 
