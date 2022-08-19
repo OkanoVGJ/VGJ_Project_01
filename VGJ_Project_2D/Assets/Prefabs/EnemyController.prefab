@@ -27,7 +27,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.7457226, y: 0.8651585, z: -0.17506032}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3dc00f971c6554f878b939826184b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elapseTurn: 0
+  sceneController: {fileID: 0}
+  result: {fileID: 11400000, guid: 4215e779169d29146b6dfb1e1ba8b8c5, type: 2}
