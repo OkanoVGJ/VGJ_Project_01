@@ -23,7 +23,6 @@ public class SceneController : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(TransitionTest());
     }
     private IEnumerator TransitionTest()
     {
