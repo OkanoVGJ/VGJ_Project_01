@@ -37,6 +37,10 @@ public class Character : MonoBehaviour
     public bool isAttacked = false;
     public DIRECTION_TYPE knockbackDir = DIRECTION_TYPE.NONE;
 
+    // ゴール
+    protected Vector2 goalPos = new Vector2(99, 99);
+    public GameObject goalObject = null;
+
     //====================================================================================================
     // グラフィック
     //====================================================================================================
